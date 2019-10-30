@@ -1,7 +1,7 @@
 package com.mycontactapitask.mycontactapiasigntask.controllers;
 
-import com.mycontactapitask.mycontactapiasigntask.contactservice.ContactInterface;
-import com.mycontactapitask.mycontactapiasigntask.dto.ContactDTO;
+import com.mycontactapitask.mycontactapiasigntask.contactservice.ContactactServiceImpl;
+import com.mycontactapitask.mycontactapiasigntask.model.Contacts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,20 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
 public class ContactsController {
 
-
-    private ContactInterface contactactService;
-
-
     @Autowired
-    public ContactsController(ContactInterface contactactService) {
-        this.contactactService = contactactService;
-    }
+    private ContactactServiceImpl contactactService;
+
 
     @GetMapping("/contacts")
-    public ResponseEntity<List<ContactDTO>> generateContacts(){
+    public ResponseEntity<List<Contacts>> generateContacts(){
         return ResponseEntity.ok(contactactService.getContacts());
     }
+
 }

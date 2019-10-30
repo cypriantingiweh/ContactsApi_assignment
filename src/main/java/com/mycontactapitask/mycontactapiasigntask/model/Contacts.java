@@ -8,7 +8,7 @@ public class Contacts {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private  Long id;
+    private  int id;
 
     @Column(name = "name")
     private String name;
@@ -16,11 +16,20 @@ public class Contacts {
     @Column(name = "PhoneNumber")
     private  String phonnumber;
 
-    public Long getId() {
+    protected Contacts() {
+    }
+
+    public Contacts(int id, String name, String phonnumber) {
+        this.name = name;
+        this.phonnumber = phonnumber;
+        this.id = id;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public Contacts setId(Long id) {
+    public Contacts setId(int id) {
         this.id = id;
         return this;
     }
